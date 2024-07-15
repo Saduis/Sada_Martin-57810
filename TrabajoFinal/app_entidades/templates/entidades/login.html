@@ -1,0 +1,21 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+
+{%block tituloLogin %}
+<h1 class="tm-site-name">LIBROS PARA TODOS</h1>
+<p class="tm-site-description">Página de login</p>
+{%endblock tituloLogin%}
+
+
+{%block contenidoSinLog %}
+<form action="" method ="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <br>    
+    <input type="submit" value="Login">
+</form>
+
+{%endblock contenidoSinLog %}

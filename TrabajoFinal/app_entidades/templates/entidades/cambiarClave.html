@@ -1,0 +1,22 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{%block contenidoLog %}
+<header>
+    <h2 class="tm-main-title">Cambiar contraseña</h2>    
+</header>
+ 
+
+<br>
+<br>
+
+<form action="" method ="post">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <br>    
+    <input type="submit" value="Cambiar clave">
+</form>
+
+{%endblock contenidoLog %}

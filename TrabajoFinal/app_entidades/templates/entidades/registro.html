@@ -1,0 +1,23 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{%block contenidoSinLog %}
+<header>
+    <h2 class="tm-main-title">Registración</h2>    
+</header>
+
+<p>Por favor elija usuario y contraseña</p>     
+
+<br>
+<br>
+
+<form action="" method ="post">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <br>    
+    <input type="submit" value="Registrarse">
+</form>
+
+{%endblock contenidoSinLog %}

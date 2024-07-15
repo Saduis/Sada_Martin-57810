@@ -1,0 +1,23 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+{%block contenidoLog %}
+<header>
+    <h2 class="tm-main-title">Avatar</h2>    
+</header>
+
+<p></p>     
+
+<br>
+<br>
+
+<form action="" method ="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <br>    
+    <input type="submit" value="Actualizar Avatar">
+</form>
+
+{%endblock contenidoLog %}

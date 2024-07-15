@@ -1,0 +1,78 @@
+{% extends 'entidades/index.html' %}
+{% load static %}
+
+
+{%block titulo %}
+<h1 class="tm-site-name">Libros</h1>
+<p class="tm-site-description">En esta seccion se ven los libros cargados</p>
+{%endblock titulo%}
+
+{% block barraNavegacion%}
+<nav class="navbar navbar-expand-md tm-main-nav-container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+        <ul class="nav nav-fill tm-main-nav-ul">
+            <li class="nav-item"><a class="nav-link " href="{%url 'home'%}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{%url 'libros'%}">Libros</a></li>
+            <li class="nav-item"><a class="nav-link" href="{%url 'autores'%}">Autores</a></li>
+            <li class="nav-item"><a class="nav-link " href="{%url 'lectores'%}">Lectores</a></li>
+            <li class="nav-item"><a class="nav-link" href="{%url 'prestamos'%}">Préstamos</a></li>
+        </ul>
+    </div>
+</nav>
+{% endblock barraNavegacion%}
+
+{%block contenidoLog %}
+<header>
+    <h2 class="tm-main-title">
+        <a>Libros</a>
+        <a  href="{%url 'buscarLibros' %}"><img src="{%static '/img/busqueda.png' %}"  height="35px" width="35px" title="Página de busqueda"/></a>
+        <a  href="{%url 'libroForm' %}"><img src="{%static '/img/agregar.png' %}"  height="35px" width="35px" title="Página para agregar libros"/></a>
+    </h2> 
+</header>
+    
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Autor/a</th>
+            <th>Año de edición</th>
+            <th>Editorial</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for lib in libros %}
+        <tr>
+            <td>{{lib.id}}</td>
+            <td>{{lib.nombre}}</td>
+            <td>{{lib.autor}}</td>
+            <td>{{lib.anio_edicion}}</td>
+            <td>{{lib.editorial}}</td>
+            <td>
+                <a
+                  href="{% url 'libroUpdate' lib.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                href="{% url 'libroDelete' lib.id %}"
+                class="btn btn-danger"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+              </a>   
+            </td>           
+            
+        </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+
+{%endblock contenidoLog %}
+</section>

@@ -1,0 +1,40 @@
+{% extends 'entidades/index.html' %}
+
+
+
+{%block titulo %}
+<h1 class="tm-site-name">Formulario de Lectores </h1>
+<p class="tm-site-description">En esta seccion se cargan lectores nuevos</p>
+{%endblock titulo%}
+
+{% block barraNavegacion%}
+<nav class="navbar navbar-expand-md tm-main-nav-container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+        <ul class="nav nav-fill tm-main-nav-ul">
+            <li class="nav-item"><a class="nav-link " href="{%url 'home'%}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link " href="{%url 'libros'%}">Libros</a></li>
+            <li class="nav-item"><a class="nav-link" href="{%url 'autores'%}">Autores</a></li>
+            <li class="nav-item"><a class="nav-link active " href="{%url 'lectores'%}">Lectores</a></li>
+            <li class="nav-item"><a class="nav-link " href="{%url 'prestamos'%}">Préstamos</a></li>
+        </ul>
+    </div>
+</nav>
+{% endblock barraNavegacion%}
+
+{%block contenidoLog %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{form.as_table }}
+    </table>
+    <br>
+    <input type="submit" value="Guardar">
+
+</form>
+
+{%endblock contenidoLog %}
